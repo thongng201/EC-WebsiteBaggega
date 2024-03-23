@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@using WebsiteBaggega.Models;
+@model List<GioHang>
+
+<h2>Giỏ hàng của bạn</h2>
+
+<div class="card border-dark">
+
+</div>
+<table class="table">
+    <tr>
+        <th>Mã Sản Phẩm</th>
+        <th>Tên Sản Phẩm</th>
+        <th>Ảnh Sản Phẩm</th>
+        <th>Đơn Giá</th>
+        <th>Số Lượng</th>
+        <th>Thành Tiền</th>
+        <th></th>
+        <th>@Html.ActionLink("Xóa tất cả", "XoaGioHang_All", "GioHang")</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td width="12%">
+                @Html.DisplayFor(modelItem => item.imasp)
+            </td>
+            <td width="26%">
+                @Html.DisplayFor(modelItem => item.sTenSP)
+            </td>
+            <td width="22%">
+                <img src="~/Images/@item.sAnh" width="400px" />
+            </td>
+            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @masp = item.imasp }))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.iDonGia)
+
+                </td>
+                <td>
+                    <input type="number" min="1" name="txtSL" value="@item.isL" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.iThanhTien)
+                </td>
+                <td>
+                    @Html.ActionLink("Xóa", "XoaGioHang", new { @masp = item.imasp })
+                </td>
+                <td>
+                    <input type="submit" value="Cập Nhật" class="btn btn-primary" />
+                </td>
+            }
+        </tr>
+    }
+    <tr style="background-color:lightyellow">
+        <td colspan="3" style="color:blue;font-weight:bold;text-align:right;">Tổng cộng</td>
+        <td style="color:red;font-weight:bold;">SL:@ViewBag.TongSoLuong</td>
+        <td></td>
+        <td colspan="4" style="color:red;font-weight:bold;text-align:left;" ">TT:@String.Format("{0}", ViewBag.TongThanhTien)VNĐ</td>
+    </tr>
+    <div class="card border-dark">
+
+    </div>
+    @{
+        KHACHHANG kh = new KHACHHANG();
+    }
+    <table align="left" style="font-size:larger">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td> Họ tên khách hàng:</td>
+                <td style="font-weight:bold"> <input type="text" name="tenkh" size=" 50" /></td>
+            </tr>
+            <tr style="height:40px">
+                <td> Địa chỉ:</td>
+                <td style="font-weight:bold"> <input type="text" name="diachi" size=" 50" /></td>
+            </tr>
+            <tr style="height:40px">
+                <td> Điện thoại:</td>
+                <td style="font-weight:bold"><input type="text" name="sdt" size=" 50" /></td>
+            </tr>
+            <tr style="height:40px">
+                <td> Ngày đặt:</td>
+                <td style="font-weight:bold"> @DateTime.Now.ToShortDateString()</td>
+            </tr>
+            <tr style="height:40px">
+                <td></td>
+                <td class="text-center">
+                    <input type="submit" value="ĐẶT HÀNG" class="btn btn-success" />
+                </td>
+            </tr>
+            @*<tr>
+                    <td  colspan="7"><input type="submit" value="Đặt Hàng"  /></td>
+                </tr>*@
+        }
+    </table>

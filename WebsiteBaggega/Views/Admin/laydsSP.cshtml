@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebsiteBaggega.Models.SANPHAM>
+@{
+    ViewBag.Title = "laydsSP";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Tạo Mới", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TENSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOLUONGTON)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HINHANH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOAISP.TENLSP)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONGIA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MOTA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONGTON)
+            </td>
+            <td>
+                @*Html.DisplayFor(modelItem => item.HINHANH)*@
+                <img src="~/Images/@item.HINHANH" width="100px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOAISP.TENLSP)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { @msp = item.MASP }) |
+                @Html.ActionLink("Xóa", "Delete", new { @msp = item.MASP })
+            </td>
+        </tr>
+    }
+
+</table>

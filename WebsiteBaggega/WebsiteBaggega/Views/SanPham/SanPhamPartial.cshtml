@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "SanPhamPartial";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@using WebsiteBaggega.Models;
+@model List<SANPHAM>
+
+
+<h2 style="margin:0">Danh sách sản phẩm</h2>
+
+<div class="row">
+    @{
+        foreach (var item in Model)
+        {
+            <div class="col-4">
+                <a href="@Url.Action("XemChiTiet",new { @msp=item.MASP })" style="text-decoration:none;color:black">
+                    <img src="@Url.Content("~/Images/"+item.HINHANH)" width="70%" height="70%" alt="Image" />
+                    @if (item.TENSP.Length > 30)
+                    {
+                        <p>
+                            <strong title="@item.TENSP">@item.TENSP.Substring(0, 30)...</strong><br />
+                            <a href="@Url.Action("XemChiTiet",new { @msp=item.MASP })">Xem chi tiết</a>
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            <strong title="@item.TENSP">@item.TENSP</strong><br />
+                            <a href="@Url.Action("XemChiTiet",new { @msp=item.MASP })">Xem chi tiết</a>
+                        </p>
+                        <div class="clear"></div>
+                    }
+                </a>
+            </div>
+        }
+    }
+
+</div>
+

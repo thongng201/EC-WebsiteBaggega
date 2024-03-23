@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+@using WebsiteBaggega.Models;
+@model SANPHAM
+<h2>Chi tiết sản phẩm</h2>
+
+<div class="card border-dark">
+    <table class="border-dark mx-3 mb-3 mt-3">
+        <tr class="text-left">
+            <td rowspan="4" width="45%">
+                <img class="card-header" src="@Url.Content("~/Images/"+Model.HINHANH)" width="400px" />
+            </td>
+            <td width="20%">Tên Sản Phẩm</td>
+            <td width="35%" style="font-weight:bold;color:blue">@Model.TENSP</td>
+        </tr>
+        <tr class="text-left">
+            <td>Tên Loại:</td>
+            <td style="color:blue">@Model.LOAISP.TENLSP</td>
+        </tr>
+        <tr class="text-left">
+            <td>Mô Tả:</td>
+            <td class="text-justify">@Model.MOTA</td>
+        </tr>
+        <tr class="text-left">
+            <td>Giá:</td>
+            <td style="font-weight:bold;color:red">@string.Format("{0}", @Model.DONGIA) VNĐ</td>
+        </tr>
+        <tr>
+            <td style="padding-left:100px;padding-top:10px">
+                <a href="@Url.Action("ThemGioHang","GioHang",new { @msp = Model.MASP,@strUrl= Request.Url.ToString() })" style="text-decoration:none;">
+                    <input type="submit" value="Mua Ngay" class="btn btn-success" />&nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
+                <a href="@Url.Action("SanPhamPartial","SanPham")" style="padding-left:50px;text-decoration:none">
+                    <input type="submit" value="Mua Tiếp" class="btn btn-success" />
+                </a>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+    

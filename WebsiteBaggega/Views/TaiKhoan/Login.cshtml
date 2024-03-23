@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    <table style="width:30%; border:2px solid #fc6565; background-color:cornsilk; margin:auto;margin-top:40px">
+        <tr>
+            <td colspan="2" style="text-align: center; background-color: #fc6565; color: white; vertical-align: middle;"><h2>THÔNG TIN ĐĂNG NHẬP</h2></td>
+        </tr>
+        <tr>
+            <td> Tên Đăng Nhập</td>
+            <td> <input type="text" size="30" name="username" /></td>
+        </tr>
+        <tr>
+            <td> Password</td>
+            <td> <input type="password" size="30" name="pass" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center;"><input type="submit" value="ĐĂNG NHẬP" style="border-color:#fc6565;background-color: #fae6e6;padding:3px" /></td>
+        </tr>
+    </table>
+}

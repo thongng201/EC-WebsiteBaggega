@@ -1,0 +1,23 @@
+﻿@using WebsiteBaggega.Models;
+@model List<LOAISP>
+<ul class="list-group list-group-flush text-left border-dark">
+    <li class="list-group-item bg-danger">
+        <a style="text-decoration:none;color:white;font-weight:bold">LOẠI SẢN PHẨM</a>
+    </li>
+    @{
+        foreach (var item in Model)
+        {
+            <li class="list-group-item list-group-item-action">
+                <a href="@Url.Action("SanPhamTheoLoai","LoaiSanPham",new { @maloai=item.MALSP })" style="text-decoration:none;color:red;font-weight:bold">
+                    @item.TENLSP
+                </a>
+            </li>
+        }
+        <li class="list-group-item">
+            <a style="text-decoration:none;color:white;font-weight:bold"></a>
+        </li>
+    }
+
+
+
+</ul>

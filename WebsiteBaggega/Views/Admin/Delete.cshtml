@@ -1,0 +1,74 @@
+﻿@model WebsiteBaggega.Models.SANPHAM
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/LayoutPage.cshtml";
+}
+
+<h2>Xóa</h2>
+
+
+<h3>Bạn có chắc muốn xóa sản phẩm này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DONGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONGTON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONGTON)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HINHANH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOAISP.TENLSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAISP.TENLSP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "laydsSP")
+        </div>
+    }
+</div>
